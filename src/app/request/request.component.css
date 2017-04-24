@@ -1,4 +1,15 @@
+label{
+  color: grey;
+}
+
+/*Button styling*/
 .btn-info{
-  background-color: #f6adcd;
+  background-color: white;
+  color: #f6adcd;
   border: none;
+}
+
+.btn-info:hover{
+  background-color: #f6adcd;
+  color: white;
 }

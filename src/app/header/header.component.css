@@ -1,5 +1,32 @@
-.requestMenu {
-  background-color: #f6adcd;
-  color: white;
+/*Image size styling*/
+
+img {
+  width: 50px;
+}
+
+/*Styling of request and contact me*/
+
+.col-sm-8 {
+  text-align: center;
+  width: 200px;
+  margin: 0 10px 0 0;
   border-radius: 5px;
+}
+
+.col-sm-8 a:hover {
+  background-color: #f6adcd;
+  border-radius: 5px;
+  color: white;
+}
+
+.col-sm-4 {
+  text-align: center;
+  width: 150px;
+  border-radius: 5px;
+}
+
+.col-sm-4 a:hover {
+  background-color: #f6adcd;
+  border-radius: 5px;
+  color: white;
 }
