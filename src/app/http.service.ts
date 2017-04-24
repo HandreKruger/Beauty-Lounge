@@ -6,7 +6,7 @@ export class HttpService {
 
   constructor(private http: Http) {}
 
-  getData(){
+  getData() {
     return this.http.get('https://beauty-lounge-798cd.firebaseio.com/title.json');
   }
 }
