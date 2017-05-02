@@ -1,42 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {FormBuilder, FormGroup,  FormControl,  Validators} from '@angular/forms';
-import { Response } from '@angular/http';
 
-import { HttpService } from 'app/http.service';
+import {HttpService} from '../http.service';
 
 @Component({
   selector: 'bl-request',
   templateUrl: './request.component.html',
   styleUrls: ['./request.component.css']
 })
-export class RequestComponent implements OnInit {
+export class RequestComponent {
 myForm: FormGroup;
 
 constructor(private formBuilder: FormBuilder, private httpService: HttpService) {
 
   this.myForm = formBuilder.group({
-    'first': ['', Validators.required],
-    'last': ['', Validators.required],
-    'email': ['', [
+    first: new FormControl ('', [Validators.required]),
+    last: new FormControl ('', [Validators.required]),
+    email: new FormControl ('', [
       Validators.required,
       // tslint:disable-next-line:max-line-length
       // tslint:disable-next-line:quotemark
-      Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")]],
-    'phone': ['', Validators.required],
-    'service': [],
-    'textArea': [],
+      Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")]),
+    phone: new FormControl ('', [Validators.required]),
+    service: new FormControl('', [Validators.required]),
+    info: new FormControl(),
   });
 }
 
-ngOnInit() {
-    this.httpService.getData()
+  onSubmit(user: string) {
+    this.httpService.sendData({user: user})
       .subscribe(
-        (data: Response) => console.log(data.json())
+        data => console.log(data)
       );
-  }
-
-  onSubmit() {
-    console.log(this.myForm);
   }
 
 }
